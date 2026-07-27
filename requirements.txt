@@ -9,4 +9,4 @@ nltk
 joblib
 streamlit
 plotly
-tensorflow
+

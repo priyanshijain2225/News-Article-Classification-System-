@@ -236,13 +236,8 @@ def load_assets(mtime):
         label_encoder = pickle.load(f)
         
     # Load T5-small model and tokenizer
-    # Fall back to base t5-small from HuggingFace if local fine-tuned weights are missing
-    if os.path.exists(os.path.join(t5_model_dir, "model.safetensors")):
-        t5_tokenizer = T5Tokenizer.from_pretrained(t5_model_dir)
-        t5_model = T5ForConditionalGeneration.from_pretrained(t5_model_dir)
-    else:
-        t5_tokenizer = T5Tokenizer.from_pretrained("t5-small")
-        t5_model = T5ForConditionalGeneration.from_pretrained("t5-small")
+    t5_tokenizer = T5Tokenizer.from_pretrained(t5_model_dir)
+    t5_model = T5ForConditionalGeneration.from_pretrained(t5_model_dir)
     
     return classifier, vectorizer, label_encoder, t5_model, t5_tokenizer
 
